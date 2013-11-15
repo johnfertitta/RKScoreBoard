@@ -33,6 +33,7 @@
     self.score2 = 0;
     
     self.isPlayer1 = YES;
+    self.dartsLeft = 3;
     
     [self resetPlayerLabels];
 }
@@ -134,13 +135,17 @@
     } else {
         self.score2 += points;
         self.player2Score.text = [NSString stringWithFormat:@"%d", self.score2];
+    }
+    [tableView reloadData];
 
+    
+    self.dartsLeft--;
+    
+    if (self.dartsLeft == 0) {
+        self.isPlayer1 = !self.isPlayer1;
+        [self resetPlayerLabels];
     }
     
-    self.isPlayer1 = !self.isPlayer1;
-    
-    [tableView reloadData];
-    [self resetPlayerLabels];
 }
 
 -(void)resetPlayerLabels {
@@ -152,6 +157,9 @@
     } else {
         [self.player2 setEnabled:NO];
     }
+    
+    self.dartsLeft = 3;
+
 }
 
 -(IBAction)player1Clicked:(id)sender {
@@ -163,7 +171,6 @@
 -(IBAction)player2Clicked:(id)sender {
     self.isPlayer1 = false;
     [self resetPlayerLabels];
-
 }
 
 

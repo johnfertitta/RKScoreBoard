@@ -11,6 +11,8 @@
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic) int dartsLeft;
+
 @property (nonatomic) BOOL isPlayer1;
 
 @property (nonatomic) int score1;
