@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ModeEnum.h"
 
 @interface TableCell : UITableViewCell
 
@@ -23,6 +22,6 @@
 
 @property (nonatomic,retain) IBOutlet UILabel* mark2;
 
--(int)hit:(BOOL)isPlayer1 inMode:(ModeEnum)mode;
+-(int)hit:(BOOL)isPlayer1 remove:(BOOL)remove;
 
 @end

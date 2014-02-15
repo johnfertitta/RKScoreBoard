@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "TableCell.h"
-#import "ModeEnum.h"
 
 @interface ViewController ()
 
@@ -28,12 +27,11 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TableCell" bundle:nil] forCellReuseIdentifier:@"TableCell"];
-    self.mode = SINGLE;
+    self.remove = false;
     self.score1 = 0;
     self.score2 = 0;
     
     self.isPlayer1 = YES;
-    self.dartsLeft = 3;
     
     [self resetPlayerLabels];
 }
@@ -42,18 +40,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(IBAction)doubleClicked:(id)sender {
-    self.mode = DOUBLE;
-}
-
--(IBAction)trippleClicked:(id)sender {
-    self.mode = TRIPPLE;
-}
-
--(IBAction)removeClicked:(id)sender {
-    self.mode = REMOVE;
 }
 
 - (NSInteger) numberOfSectionsInTableView: (UITableView *)tableView
@@ -111,8 +97,7 @@
             cell.value = 25;
             break;
         case 7:
-            cell.score.text = @"MISS";
-            cell.value = 0;
+            cell.score.text = @"EDIT";
             break;
     }
     
@@ -125,9 +110,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TableCell *cell = (TableCell*)[tableView cellForRowAtIndexPath:indexPath];
-    int points = [cell hit:self.isPlayer1 inMode:self.mode];
+    int points = [cell hit:self.isPlayer1 remove:self.remove];
     
-    self.mode = SINGLE;
+    if (indexPath.row == 7) {
+        self.remove = !self.remove;
+    }
     
     if (self.isPlayer1) {
         self.score1 += points;
@@ -137,15 +124,6 @@
         self.player2Score.text = [NSString stringWithFormat:@"%d", self.score2];
     }
     [tableView reloadData];
-
-    
-    self.dartsLeft--;
-    
-    if (self.dartsLeft == 0) {
-        self.isPlayer1 = !self.isPlayer1;
-        [self resetPlayerLabels];
-    }
-    
 }
 
 -(void)resetPlayerLabels {
@@ -157,9 +135,6 @@
     } else {
         [self.player2 setEnabled:NO];
     }
-    
-    self.dartsLeft = 3;
-
 }
 
 -(IBAction)player1Clicked:(id)sender {

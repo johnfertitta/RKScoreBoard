@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ModeEnum.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic) int dartsLeft;
 
 @property (nonatomic) BOOL isPlayer1;
 
@@ -26,13 +23,7 @@
 
 @property (nonatomic,retain) IBOutlet UITableView* tableView;
 
-@property (nonatomic) ModeEnum mode;
-
--(IBAction)doubleClicked:(id)sender;
-
--(IBAction)trippleClicked:(id)sender;
-
--(IBAction)removeClicked:(id)sender;
+@property (nonatomic) BOOL remove;
 
 -(IBAction)player1Clicked:(id)sender;
 

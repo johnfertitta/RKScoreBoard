@@ -58,7 +58,6 @@
 		F06F2CD91835ACF900B3DED5 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		F083AF431835B88B00DE8D3C /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
 		F083AF441835B88B00DE8D3C /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
-		F0B15AAB1835C25700FF3C84 /* ModeEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModeEnum.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +127,6 @@
 				F06F2CD91835ACF900B3DED5 /* TableCell.xib */,
 				F083AF431835B88B00DE8D3C /* TableCell.h */,
 				F083AF441835B88B00DE8D3C /* TableCell.m */,
-				F0B15AAB1835C25700FF3C84 /* ModeEnum.h */,
 			);
 			path = RKScoreBoard;
 			sourceTree = "<group>";

@@ -26,12 +26,11 @@
     // Configure the view for the selected state
 }
 
--(int)hit:(BOOL)isPlayer1 inMode:(ModeEnum)mode {
-    int hitCount = 1 * mode;
+-(int)hit:(BOOL)isPlayer1 remove:(BOOL)remove {
     int points = 0;
     
     if (isPlayer1) {
-        if (hitCount == 0) {
+        if (remove) {
             //remove
             self.timesHit1--;
             
@@ -42,10 +41,10 @@
             }
         } else {
             if (self.timesHit1 > 3) {
-                points = hitCount * self.value;
-                self.timesHit1 += hitCount;
+                points = self.value;
+                self.timesHit1++;
             } else {
-                self.timesHit1 += hitCount;
+                self.timesHit1++;
                 if (self.timesHit1 > 3) {
                     points = (self.timesHit1 - 3) * self.value;
                 } else {
@@ -54,7 +53,7 @@
             }
         }
     } else {
-        if (hitCount == 0) {
+        if (remove) {
             //remove
             self.timesHit2--;
             
@@ -65,10 +64,10 @@
             }
         } else {
             if (self.timesHit2 > 3) {
-                points = hitCount * self.value;
-                self.timesHit2 += hitCount;
+                points = self.value;
+                self.timesHit2++;
             } else {
-                self.timesHit2 += hitCount;
+                self.timesHit2++;
                 if (self.timesHit2 > 3) {
                     points = (self.timesHit2 - 3) * self.value;
                 } else {
